@@ -1,0 +1,4 @@
+Jinja2>=3.1
+PyYAML>=6.0
+# Later, when you start pushing configs to the lab over SSH:
+# netmiko

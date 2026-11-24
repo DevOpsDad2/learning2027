@@ -1,0 +1,16 @@
+# Rendered configs (they may contain the admin secret)
+output/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

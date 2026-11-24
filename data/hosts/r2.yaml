@@ -1,0 +1,28 @@
+hostname: R2
+role: router
+platform: iosv
+
+ospf:
+  process_id: 1
+  router_id: 2.2.2.2
+
+interfaces:
+  - name: GigabitEthernet0/0
+    description: MGMT
+    ipv4: 10.99.0.12/24
+
+  - name: Loopback0
+    description: Router ID
+    ipv4: 2.2.2.2/32
+    ospf_area: 0
+
+  - name: GigabitEthernet0/1
+    description: to R1 Gi0/1
+    ipv4: 10.0.12.2/30
+    ospf_area: 0
+
+  - name: GigabitEthernet0/2
+    description: to SW1 Gi0/1 (USERS gateway)
+    ipv4: 10.10.10.1/24
+    ospf_area: 0
+    ospf_passive: true    # no OSPF neighbors on the user LAN

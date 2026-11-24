@@ -1,0 +1,24 @@
+# Settings shared by every device in the lab.
+# Per-device files in data/hosts/ can override any of these keys.
+
+domain_name: lab.local
+
+banner: |
+  Authorized access only. learning2027 lab device.
+
+dns_servers:
+  - 10.99.0.1
+
+ntp_servers:
+  - 10.99.0.1
+
+syslog_servers:
+  - 10.99.0.1
+
+# Local admin account. The secret is NOT stored here: render.py reads it
+# from the LAB_ADMIN_SECRET environment variable at render time.
+admin_user: admin
+
+ssh:
+  version: 2
+  vty_lines: "0 4"
