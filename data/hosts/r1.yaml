@@ -1,0 +1,22 @@
+hostname: R1
+role: router          # picks templates/ios/router.j2
+platform: iosv
+
+ospf:
+  process_id: 1
+  router_id: 1.1.1.1
+
+interfaces:
+  - name: GigabitEthernet0/0
+    description: MGMT
+    ipv4: 10.99.0.11/24
+
+  - name: Loopback0
+    description: Router ID
+    ipv4: 1.1.1.1/32
+    ospf_area: 0
+
+  - name: GigabitEthernet0/1
+    description: to R2 Gi0/1
+    ipv4: 10.0.12.1/30
+    ospf_area: 0

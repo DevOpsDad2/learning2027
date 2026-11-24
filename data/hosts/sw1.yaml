@@ -1,0 +1,35 @@
+hostname: SW1
+role: switch          # picks templates/ios/switch.j2
+platform: iosvl2
+
+vlans:
+  - id: 10
+    name: USERS
+  - id: 99
+    name: MGMT
+
+# Layer-3 management interface for the switch itself.
+mgmt:
+  vlan: 99
+  ipv4: 10.99.0.21/24
+  gateway: 10.99.0.1
+
+interfaces:
+  - name: GigabitEthernet0/0
+    description: MGMT uplink
+    mode: access
+    vlan: 99
+
+  - name: GigabitEthernet0/1
+    description: to R2 Gi0/2
+    mode: access
+    vlan: 10
+
+  - name: GigabitEthernet0/2
+    description: USERS host port
+    mode: access
+    vlan: 10
+
+  - name: GigabitEthernet0/3
+    description: spare
+    shutdown: true

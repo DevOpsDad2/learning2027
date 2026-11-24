@@ -1,0 +1,27 @@
+{#- Common settings for every IOS device. Included by router.j2 and switch.j2. -#}
+hostname {{ hostname }}
+!
+ip domain-name {{ domain_name }}
+{% for server in dns_servers %}
+ip name-server {{ server }}
+{% endfor %}
+!
+username {{ admin_user }} privilege 15 secret {{ admin_secret }}
+!
+ip ssh version {{ ssh.version }}
+!
+{% for server in ntp_servers %}
+ntp server {{ server }}
+{% endfor %}
+{% for server in syslog_servers %}
+logging host {{ server }}
+{% endfor %}
+!
+banner motd ^
+{{ banner | trim }}
+^
+!
+line vty {{ ssh.vty_lines }}
+ login local
+ transport input ssh
+!
